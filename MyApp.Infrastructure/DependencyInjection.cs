@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MyApp.Domain.Interfaces;
-using MyApp.Infrastructure.Services;  // This should match your namespace
+using MyApp.Infrastructure.Services;
 
 namespace MyApp.Infrastructure
 {

@@ -2,7 +2,7 @@
 using MyApp.Domain.Interfaces;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/Auth")]
 public class AuthController : ControllerBase
 {
     private readonly IJwtTokenService _jwtService;
@@ -15,7 +15,7 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest request)
     {
-        // For demo, using hardcoded user. Replace with DB check.
+        // For demo, using hardcoded User Credentilas
         if (request.Username == "admin" && request.Password == "admin")
         {
             var user = new User { Username = "admin", Role = "Admin" };
