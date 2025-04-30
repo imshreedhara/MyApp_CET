@@ -2,11 +2,9 @@
 using MyApp.Domain.Interfaces;
 using MyApp.Infrastructure.Repositories;
 using MyApp.Infrastructure;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +24,7 @@ builder.Services.AddInfrastructure();
 builder.Services.AddScoped<ICETQuestionRepository, CETQuestionRepository>();
 builder.Services.AddScoped<CETQuestionService>();
 
-// ✅ Add JWT Authentication
+// Add JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -36,9 +34,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "MyApp", // 👉 change as needed
-            ValidAudience = "MyAppUsers", // 👉 change as needed
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsASecretKey123456")) // 👉 same as in JwtTokenService
+            ValidIssuer = "MyApp", //  change as needed
+            ValidAudience = "MyAppUsers", //  change as needed
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsASecretKey123456")) // same as in JwtTokenService
         };
     });
 
@@ -58,7 +56,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// ✅ Add Authentication BEFORE Authorization
+// Add Authentication BEFORE Authorization
 app.UseAuthentication();
 app.UseAuthorization();
 

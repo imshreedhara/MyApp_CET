@@ -4,7 +4,7 @@ using MyApp.Domain.Entities;
 
 namespace MyApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/CETQuestions")]
     [ApiController]
     public class CETQuestionsController : ControllerBase
     {
@@ -43,7 +43,6 @@ namespace MyApp.Controllers
             finally
             {
                 _logger.LogInformation($"Completed request for Year: {examYear}, Subject: {subject}");
-                // If we had any disposable resources, we would clean up here.
             }
         }
     }
